@@ -11,7 +11,9 @@ export const routes: Routes = [
   {
     path: 'login',
     loadComponent: () =>
-      import('./features/login/login.component').then((c) => c.LoginComponent),
+      import('./features/auth/login/login.component').then(
+        (c) => c.LoginComponent
+      ),
     canActivate: [noAuthGuard],
   },
   {

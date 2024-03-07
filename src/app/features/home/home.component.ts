@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LoginComponent } from '../login/login.component';
+import { LoginComponent } from '../auth/login/login.component';
 
 @Component({
   selector: 'app-home',
