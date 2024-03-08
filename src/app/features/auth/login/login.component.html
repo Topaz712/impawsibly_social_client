@@ -8,6 +8,11 @@
       <label for="password">Password</label>
       <input type="password" formControlName="password" />
     </div>
+
+    @if(isError) {
+      <p class="error">Username and Password credentials failed. Please try again</p>
+    }
+
     <button type="submit" [disabled]="!loginForm.valid">Login</button>
   </form>
 </div>

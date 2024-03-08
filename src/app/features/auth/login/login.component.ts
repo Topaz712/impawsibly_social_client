@@ -16,32 +16,34 @@ import { AuthenticationService } from '../../../core/services/authentication.ser
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
-  loginForm: FormGroup;
+  loginForm: FormGroup = new FormGroup({
+    username: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required),
+  });
+
+  isError: boolean = false;
 
   constructor(
     private authService: AuthenticationService,
     private router: Router
-  ) {
-    this.loginForm = new FormGroup({
-      username: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required),
-    });
-  }
+  ) {}
 
   login() {
     if (this.loginForm.valid) {
-      this.authService
-        .login(this.loginForm.value.username, this.loginForm.value.password)
-        .subscribe({
-          next: (res: any) => {
-            console.log('Logged in with token:', res.token);
-            this.authService.setToken(res.token);
-            this.router.navigate(['/']);
-          },
-          error: (error: any) => {
-            console.error('Login error', error);
-          },
-        });
+      const username = this.loginForm.value.username;
+      const password = this.loginForm.value.password;
+
+      this.authService.login(username, password).subscribe({
+        next: (res: any) => {
+          console.log('Logged in with token:', res.token);
+          this.authService.setToken(res.token);
+          this.router.navigate(['/']);
+        },
+        error: (error: any) => {
+          console.error('Login error', error);
+          this.isError = true;
+        },
+      });
     }
   }
 }
