@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, switchMap } from 'rxjs';
 import { Router } from '@angular/router';
 import { UserService } from './user.service';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -28,6 +29,10 @@ export class AuthenticationService {
           return this.userService.getBootstrapData();
         })
       );
+  }
+
+  signup(data: any) {
+    return this.http.post(`${environment.apiUrl}/users`, data);
   }
 
   setToken(token: string) {
