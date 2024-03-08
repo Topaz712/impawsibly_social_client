@@ -5,8 +5,10 @@ import { noAuthGuard } from './core/guards/no-auth.guard';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
     pathMatch: 'full',
+    loadComponent: () =>
+      import('./features/home/home.component').then((c) => c.HomeComponent),
+    canActivate: [authGuard],
   },
   {
     path: 'login',
@@ -15,11 +17,5 @@ export const routes: Routes = [
         (c) => c.LoginComponent
       ),
     canActivate: [noAuthGuard],
-  },
-  {
-    path: 'home',
-    loadComponent: () =>
-      import('./features/home/home.component').then((c) => c.HomeComponent),
-    canActivate: [authGuard],
   },
 ];
