@@ -3,10 +3,12 @@
     <a routerLink="/">Impawsibly Social</a>
   </div>
   <div class="nav-links">
-    @if(authService.isLoggedIn()) {
-      <button (click)="logout()">Logout</button>
+    @if(isLoggedIn()) {
+      <span>Welcome back, {{currentUser?.username}}</span>
+      <a (click)="logout()">Logout</a>
     } @else {
       <a routerLink="/login">Login</a>
+      <a routerLink="/signup">Sign Up</a>
     }
   </div>
 </nav>
