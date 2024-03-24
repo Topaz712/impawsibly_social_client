@@ -9,13 +9,13 @@ export class Pet {
   isFixed: boolean;
 
   constructor(pet: any) {
-    this.id = pet.id;
-    this.name = pet.name;
-    this.species = pet.species;
-    this.breed = pet.breed;
-    this.sex = pet.sex;
-    this.birthday = pet.birthday;
-    this.isVaccinated = pet.isVaccinated;
-    this.isFixed = pet.isFixed;
+    this.id = pet.id || 0;
+    this.name = pet.name || '';
+    this.species = pet.species || '';
+    this.breed = pet.breed || '';
+    this.sex = pet.sex || '';
+    this.birthday = pet.birthday || '';
+    this.isVaccinated = pet.isVaccinated || '';
+    this.isFixed = pet.isFixed || '';
   }
 }
