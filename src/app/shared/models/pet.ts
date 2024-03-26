@@ -1,3 +1,5 @@
+import { Owner } from './owner';
+
 export class Pet {
   id: number;
   name: string;
@@ -7,6 +9,7 @@ export class Pet {
   birthday: Date;
   isVaccinated: boolean;
   isFixed: boolean;
+  owner?: Owner;
 
   constructor(pet: any) {
     this.id = pet.id || 0;
@@ -17,5 +20,6 @@ export class Pet {
     this.birthday = pet.birthday || '';
     this.isVaccinated = pet.isVaccinated || '';
     this.isFixed = pet.isFixed || '';
+    this.owner = pet.Owner || null;
   }
 }
