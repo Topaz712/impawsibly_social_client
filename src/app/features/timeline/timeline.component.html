@@ -1,1 +1,9 @@
-<p>timeline works!</p>
+<div class="container">
+  <div class="side_column"></div>
+  <div class="main_column">
+    @for (post of posts; track post.id){
+      <app-post [post]="post"/>
+    }
+  </div>
+  <div class="side_column"></div>
+</div>

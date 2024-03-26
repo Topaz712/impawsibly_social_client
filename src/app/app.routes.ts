@@ -3,12 +3,21 @@ import { authGuard } from './core/guards/auth.guard';
 import { noAuthGuard } from './core/guards/no-auth.guard';
 
 export const routes: Routes = [
+  // {
+  //   path: '',
+  //   pathMatch: 'full',
+  //   loadComponent: () =>
+  //     import('./features/home/home.component').then((c) => c.HomeComponent),
+  //   canActivate: [authGuard],
+  // },
   {
     path: '',
     pathMatch: 'full',
     loadComponent: () =>
-      import('./features/home/home.component').then((c) => c.HomeComponent),
-    canActivate: [authGuard],
+      import('./features/timeline/timeline.component').then(
+        (c) => c.TimelineComponent
+      ),
+    canActivate: [noAuthGuard],
   },
   {
     path: 'login',
