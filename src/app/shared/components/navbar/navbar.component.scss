@@ -23,9 +23,9 @@
 .navbar .nav-links a,
 .navbar .nav-links button {
 	background: none;
-	border: 1px solid #023047;
+	// border: 1px solid #023047; //for a visible button look
 	border-radius: 4px;
-	color: #023047 ; 
+	color: #023047 ;
 	padding: 0.5rem 1rem;
 	text-decoration: none;
 	font-size: 1rem;
@@ -43,11 +43,59 @@
 .navbar .nav-links button {
 	background-color: transparent;
 	color: white;
-	border-color: white;
+	border-color: #023047;
 }
 
 .navbar .nav-links button:hover {
 	color: #007bff;
 	background-color: white;
 	border-color: #007bff;
+}
+
+.user {
+  color: #023047;
+}
+
+/* sidebar paw icon */
+.menu-container {
+  transition: width 0.3s ease;
+  width: 3rem;
+}
+
+.menu-container.active {
+  width: 275px;
+}
+
+.menu img{
+  cursor: pointer;
+  background: none;
+}
+
+/* nav icon when clicked */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #fff;
+  border-left: 2px solid lightblue;
+  transition: right 0.3s ease;
+}
+
+.sidebar.active {
+  right: -20px;
+}
+
+/* links inside sidebar */
+.sidebar a{
+  display: flex;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  color: #333;
+  text-decoration: none;
+}
+
+.sidebar a:hover {
+  background-color: #f0f0f0f0;
 }

@@ -4,11 +4,32 @@
   </div>
   <div class="nav-links">
     @if(isLoggedIn()) {
-      <span>Welcome back, {{currentUser?.username}}</span>
+
+        Welcome back,<span class="user">
+          <a routerLink="profile">{{currentUser?.username}}</a>
+        <img src="./assets/icons/person.svg" alt="profile">
+      </span>
       <a (click)="logout()">Logout</a>
+      <div class="menu-container" [class.active]="isSidebarVisible">
+        <a class="menu" (click)="toggleSidebar()">
+          <img src="./assets/icons/paw-icon.svg" alt="paw-print">
+        </a>
+      </div>
     } @else {
       <a routerLink="/login">Login</a>
       <a routerLink="/signup">Sign Up</a>
     }
+
   </div>
 </nav>
+
+<div class="sidebar" [class.active]="isSidebarVisible">
+  <a
+    routerLink=""
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{exact:true}">Dashboard
+  </a>
+  <a routerLink="/profile">Profile</a>
+  <a routerLink="/playdates">Playdates</a>
+  <a routerLink="/create-playdate">Create Playdate</a>
+</div>

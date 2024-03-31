@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { AuthenticationService } from '../../../core/services/authentication.service';
 import { UserService } from '../../../core/services/user.service';
 import { User } from '../../models/user';
@@ -7,12 +7,13 @@ import { User } from '../../models/user';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
 })
 export class NavbarComponent implements OnInit {
   currentUser: User | null = null;
+  isSidebarVisible: boolean = false;
 
   constructor(
     private authService: AuthenticationService,
@@ -32,5 +33,9 @@ export class NavbarComponent implements OnInit {
   logout() {
     this.authService.logout();
     this.userService.setCurrentUser(null);
+  }
+
+  toggleSidebar() {
+    this.isSidebarVisible = !this.isSidebarVisible;
   }
 }
