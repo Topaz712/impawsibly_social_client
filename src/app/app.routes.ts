@@ -11,14 +11,6 @@ export const routes: Routes = [
     canActivate: [authGuard],
   },
   {
-    path: 'posts',
-    loadComponent: () =>
-      import('./features/timeline/timeline.component').then(
-        (c) => c.TimelineComponent
-      ),
-    canActivate: [noAuthGuard],
-  },
-  {
     path: 'login',
     loadComponent: () =>
       import('./features/auth/login/login.component').then(
@@ -35,10 +27,34 @@ export const routes: Routes = [
     canActivate: [noAuthGuard],
   },
   {
+    path: 'posts',
+    loadComponent: () =>
+      import('./features/timeline/timeline.component').then(
+        (c) => c.TimelineComponent
+      ),
+    canActivate: [noAuthGuard],
+  },
+  {
     path: 'profile',
     loadComponent: () =>
       import('./shared/components/profile/profile.component').then(
         (c) => c.ProfileComponent
+      ),
+    canActivate: [authGuard],
+  },
+  {
+    path: 'playdates',
+    loadComponent: () =>
+      import('./features/playdates/playdates.component').then(
+        (c) => c.PlaydatesComponent
+      ),
+    canActivate: [authGuard],
+  },
+  {
+    path: 'playdates/:id',
+    loadComponent: () =>
+      import('./features/playdate-details/playdate-details.component').then(
+        (c) => c.PlaydateDetailsComponent
       ),
     canActivate: [authGuard],
   },
