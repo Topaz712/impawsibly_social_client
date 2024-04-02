@@ -1,0 +1,36 @@
+<div class="form-container">
+  <form [formGroup]="playdateForm" (ngSubmit)="onCreatePlaydate()">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" formControlName="title">
+    </div>
+    <div class="form-group">
+      <label for="content">Content</label>
+      <input type="text" formControlName="content">
+    </div>
+    <div class="form-group">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" formControlName="speciesSpecific" id="speciesSpecificCheckbox">
+        <label class="form-check-label" for="speciesSpecificCheckbox">Species Specific</label>
+      </div>
+        @if (playdateForm.get('speciesSpecific')?.value) {
+          <label>Which animal species prefered?</label>
+          <input type="text" formControlName="speciesSpecificInput">
+        }
+    </div>
+    <div class="form-group">
+      <label for="petLimit">Pet Limit</label>
+      <input type="number" formControlName="petLimit">
+    </div>
+    <div class="form-group">
+      <label for="startDateTime">Start Date and Time:</label>
+      <input type="datetime-local" formControlName="startDateTime">
+    </div>
+    <div class="form-group">
+      <label for="endDateTime">End Date and Time:</label>
+      <input type="datetime-local" formControlName="endDateTime">
+    </div>
+
+    <button type="submit">Create Playdate</button>
+  </form>
+</div>
