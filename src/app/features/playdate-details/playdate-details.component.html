@@ -1,0 +1,13 @@
+<div class="playdate-details-container">
+  <h2 class="playdate-title">{{playdate.title}}</h2>
+  <p class="playdate-content">{{playdate.content}}</p>
+  <div class="playdate-info">
+    <span class="playdate-dates">
+      {{playdate.startDateTime | date: "medium"}} - {{playdate.endDateTime | date: "medium"}}
+    </span>
+    <div class="playdate-creator">
+      created by: <strong>{{playdate.creator.firstName}}</strong>
+      For pet: <strong>{{playdate.pet?.name}}</strong>
+    </div>
+  </div>
+</div>
