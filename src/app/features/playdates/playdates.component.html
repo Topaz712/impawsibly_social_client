@@ -1,0 +1,10 @@
+<div class="playdate-list-container">
+  @for (playdate of playdates; track playdate.id) {
+    <app-playdate [playdate]="playdate"/>
+  }
+</div>
+
+<div class="pagination-controls"> <!-- TODO: maybe show how many pages there are too-->
+  <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+  <button (click)="nextPage()" [disabled]="currentPage === totalPages || totalPages === 0">Next</button>
+</div>
