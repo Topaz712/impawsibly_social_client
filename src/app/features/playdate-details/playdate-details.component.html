@@ -1,4 +1,7 @@
 <div class="playdate-details-container">
+  <div class="playdate-image">
+    <img [src]="playdate.cover_image_url || ''" alt="">
+  </div>
   <h2 class="playdate-title">{{playdate.title}}</h2>
   <p class="playdate-content">{{playdate.content}}</p>
   <div class="playdate-info">
