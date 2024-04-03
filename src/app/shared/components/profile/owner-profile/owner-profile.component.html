@@ -1,0 +1,21 @@
+<p>Please fill out the form to create your profile.</p>
+<div class="container-fluid page">
+  <div class="row">
+    <div class="col-md-12 col-sm-12">
+      <form [formGroup]="ownerForm" (ngSubmit)="onCreateProfile()">
+        <div>
+          <label for="fname">First Name:</label>
+          <input type="text" id="name" formControlName="name">
+        </div>
+        <div>
+          <label for="lname">Last Name:</label>
+          <input type="text" id="lname" formControlName="lname">
+        </div>
+        <input type="hidden" formControlName="userId">
+        <div>
+          <button type="button" class="btn btn-success">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
