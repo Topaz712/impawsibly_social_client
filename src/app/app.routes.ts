@@ -41,12 +41,30 @@ export const routes: Routes = [
         (c) => c.ProfileComponent
       ),
     canActivate: [authGuard],
+    canActivateChild: [authGuard],
+    children: [
+      {
+        path: 'pet-profile',
+        loadComponent: () =>
+          import(
+            './shared/components/profile/pet-profile/pet-profile.component'
+          ).then((c) => c.PetProfileComponent),
+      },
+    ],
   },
   {
     path: 'playdates',
     loadComponent: () =>
       import('./features/playdates/playdates.component').then(
         (c) => c.PlaydatesComponent
+      ),
+    canActivate: [authGuard],
+  },
+  {
+    path: 'create-playdate',
+    loadComponent: () =>
+      import('./features/create-playdate/create-playdate.component').then(
+        (c) => c.CreatePlaydateComponent
       ),
     canActivate: [authGuard],
   },

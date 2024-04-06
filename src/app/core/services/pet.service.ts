@@ -10,12 +10,16 @@ import { Observable } from 'rxjs';
 export class PetService {
   constructor(private http: HttpClient) {}
 
-  createPet(pet: any): Observable<Pet> {
-    return this.http.post<Pet>(`${environment.apiUrl}/pets`, pet);
+  getPets(): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/pets`);
   }
 
   getPetById(petId: number): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/pets/${petId}`);
+  }
+
+  createPet(pet: any): Observable<Pet> {
+    return this.http.post<Pet>(`${environment.apiUrl}/pets`, pet);
   }
 
   updatePet(petId: number, petData: any): Observable<Pet> {
@@ -24,9 +28,5 @@ export class PetService {
 
   deletePet(petId: number): Observable<any> {
     return this.http.delete<any>(`${environment.apiUrl}/pets/${petId}`);
-  }
-
-  getPetPosts(petId: number): Observable<any> {
-    return this.http.get<any>(`${environment.apiUrl}/pets/${petId}/posts`);
   }
 }

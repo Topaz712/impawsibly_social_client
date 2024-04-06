@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
 export class SignupComponent {
   signupForm: FormGroup = new FormGroup({
     username: new FormControl(''),
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
     email: new FormControl(''),
     password: new FormControl(''),
     password_confirmation: new FormControl(''),

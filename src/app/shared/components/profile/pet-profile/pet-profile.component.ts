@@ -8,7 +8,6 @@ import {
 import { PetService } from '../../../../core/services/pet.service';
 import { Router, RouterLink } from '@angular/router';
 import { DatePipe } from '@angular/common';
-import { ProfileService } from '../../../../core/services/profile.service';
 
 @Component({
   selector: 'app-pet-profile',
@@ -31,23 +30,7 @@ export class PetProfileComponent implements OnInit {
   selectedFile: File | null = null;
   ownerId: number | null = null;
 
-  constructor(
-    private petService: PetService,
-    private profileService: ProfileService,
-    private router: Router
-  ) {}
-
-  // ngOnInit(): void {
-  //   this.profileService.getOwnerProfile(this.ownerId.toString()).subscribe(
-  //     (ownerProfile: any) => {
-  //       this.ownerId = ownerProfile?.id;
-  //       console.log(ownerProfile);
-  //     },
-  //     (error) => {
-  //       console.error('Error fetching owner profile:', error);
-  //     }
-  //   );
-  // }
+  constructor(private petService: PetService, private router: Router) {}
 
   ngOnInit(): void {}
 

@@ -1,5 +1,5 @@
-import { Owner } from './owner';
 import { Pet } from './pet';
+import { User } from './user';
 
 export class Playdate {
   id: number;
@@ -12,8 +12,8 @@ export class Playdate {
   createdAt: string;
   hasJoined: boolean;
   cover_image_url: string;
-  participants: Owner[] | Pet[];
-  creator: Owner;
+  participants: User[] | Pet[];
+  creator: User;
   pet?: Pet;
 
   constructor(playdate: any) {
@@ -23,7 +23,7 @@ export class Playdate {
     this.startDateTime = playdate.startDateTime;
     this.endDateTime = playdate.endDateTime;
     this.createdAt = playdate.createdAt;
-    this.creator = playdate.creator || new Owner({});
+    this.creator = playdate.creator || new User({});
     this.pet = playdate.pet || null;
     this.petLimit = playdate.petLimit || 0;
     this.speciesSpecific = playdate.speciesSpecific || false;
