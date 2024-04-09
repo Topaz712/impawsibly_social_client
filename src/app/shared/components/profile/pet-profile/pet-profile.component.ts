@@ -23,8 +23,8 @@ export class PetProfileComponent implements OnInit {
     breed: new FormControl('', Validators.required),
     sex: new FormControl('', Validators.required),
     birthday: new FormControl('', Validators.required),
-    isVaccinated: new FormControl('', Validators.required),
-    isFixed: new FormControl('', Validators.required),
+    is_vaccinated: new FormControl('', Validators.required),
+    is_fixed: new FormControl('', Validators.required),
   });
 
   selectedFile: File | null = null;
@@ -46,8 +46,8 @@ export class PetProfileComponent implements OnInit {
     formData.append('breed', this.petForm.get('breed')!.value);
     formData.append('sex', this.petForm.get('sex')!.value);
     formData.append('birthday', this.petForm.get('birthday')!.value);
-    formData.append('isVaccinated', this.petForm.get('isVaccinated')!.value);
-    formData.append('isFixed', this.petForm.get('isFixed')!.value);
+    formData.append('is_vaccinated', this.petForm.get('isVaccinated')!.value);
+    formData.append('is_fixed', this.petForm.get('isFixed')!.value);
     formData.append('cover-image', this.selectedFile, this.selectedFile!.name);
     formData.append('ownerId', this.ownerId.toString());
 
