@@ -22,4 +22,17 @@ export class PlaydateService {
   createPlaydate(playdate: Playdate) {
     return this.http.post(`${environment.apiUrl}/playdates`, playdate);
   }
+
+  joinPlaydate(playdateId: number) {
+    return this.http.post(
+      `${environment.apiUrl}/playdates/${playdateId}/join`,
+      {}
+    );
+  }
+
+  leavePlaydate(playdateId: number) {
+    return this.http.delete(
+      `${environment.apiUrl}/playdates/${playdateId}/leave`
+    );
+  }
 }

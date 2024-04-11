@@ -4,7 +4,7 @@
   }
 </div>
 
-<div class="pagination-controls"> <!-- TODO: maybe show how many pages there are too-->
+<div class="page-controls"> <!-- TODO: maybe show how many pages there are too-->
   <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
   <button (click)="nextPage()" [disabled]="currentPage === totalPages || totalPages === 0">Next</button>
 </div>

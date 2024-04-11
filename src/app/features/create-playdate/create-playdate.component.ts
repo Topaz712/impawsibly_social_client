@@ -20,11 +20,11 @@ export class CreatePlaydateComponent implements OnInit {
   playdateForm: FormGroup = new FormGroup({
     title: new FormControl('', Validators.required),
     content: new FormControl('', Validators.required),
-    speciesSpecific: new FormControl(false),
-    speciesSpecificInput: new FormControl(''),
-    startDateTime: new FormControl('', Validators.required),
-    endDateTime: new FormControl('', Validators.required),
-    petLimit: new FormControl('', Validators.required),
+    species_specific: new FormControl(false),
+    species_specific_input: new FormControl(''),
+    start_date_time: new FormControl('', Validators.required),
+    end_date_time: new FormControl('', Validators.required),
+    pet_limit: new FormControl('', Validators.required),
   });
 
   selectedFile: File | null = null;
@@ -40,17 +40,20 @@ export class CreatePlaydateComponent implements OnInit {
     const formData: any = new FormData();
     formData.append('title', this.playdateForm.get('title')!.value);
     formData.append('content', this.playdateForm.get('content')!.value);
-    formData.append('petLimit', this.playdateForm.get('petLimit')!.value);
+    formData.append('pet_limit', this.playdateForm.get('pet_limit')!.value);
     formData.append(
-      'speciesSpecific',
-      this.playdateForm.get('speciesSpecific')!.value
+      'species_specific',
+      this.playdateForm.get('species_specific')!.value
     );
     formData.append(
-      'startDateTime',
-      this.playdateForm.get('startDateTime')!.value
+      'start_date_time',
+      this.playdateForm.get('start_date_time')!.value
     );
-    formData.append('endDateTime', this.playdateForm.get('endDateTime')!.value);
-    formData.append('cover-image', this.selectedFile, this.selectedFile!.name);
+    formData.append(
+      'end_date_time',
+      this.playdateForm.get('end_date_time')!.value
+    );
+    formData.append('cover_image', this.selectedFile, this.selectedFile!.name);
 
     this.playdateService.createPlaydate(formData).subscribe({
       next: () => {

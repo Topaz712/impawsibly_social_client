@@ -10,30 +10,30 @@
     </div>
     <div class="form-group">
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" formControlName="speciesSpecific" id="speciesSpecificCheckbox">
-        <label class="form-check-label" for="speciesSpecificCheckbox">Species Specific</label>
+        <input class="form-check-input" type="checkbox" formControlName="species_specific" id="species_specificCheckbox">
+        <label class="form-check-label" for="species_specificCheckbox">Species Specific</label>
       </div>
-        @if (playdateForm.get('speciesSpecific')?.value) {
+        @if (playdateForm.get('species_specific')?.value) {
           <label>Which animal species prefered?</label>
-          <input type="text" formControlName="speciesSpecificInput">
+          <input type="text" formControlName="species_specific_input">
         }
     </div>
     <div class="form-group">
-      <label for="petLimit">Pet Limit</label>
-      <input type="number" formControlName="petLimit">
+      <label for="pet_limit">Pet Limit</label>
+      <input type="number" formControlName="pet_limit">
     </div>
     <div class="form-group">
-      <label for="startDateTime">Start Date and Time:</label>
-      <input type="datetime-local" formControlName="startDateTime">
+      <label for="start_date_time">Start Date and Time:</label>
+      <input type="datetime-local" formControlName="start_date_time">
     </div>
     <div class="form-group">
-      <label for="endDateTime">End Date and Time:</label>
-      <input type="datetime-local" formControlName="endDateTime">
+      <label for="end_date_time">End Date and Time:</label>
+      <input type="datetime-local" formControlName="end_date_time">
     </div>
 
     <div>
-      <label for="coverImage">Cover Image</label>
-      <input type="file" (change)="onFileSelected($event)" id="cover-image">
+      <label for="cover_image">Playdate Cover Image</label>
+      <input type="file" (change)="onFileSelected($petProfile)" id="cover_image">
     </div>
     <button type="submit">Create Playdate</button>
   </form>

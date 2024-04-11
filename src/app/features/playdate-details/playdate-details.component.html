@@ -6,11 +6,16 @@
   <p class="playdate-content">{{playdate.content}}</p>
   <div class="playdate-info">
     <span class="playdate-dates">
-      {{playdate.startDateTime | date: "medium"}} - {{playdate.endDateTime | date: "medium"}}
+      {{playdate.start_date_time | date: "medium"}} - {{playdate.end_date_time | date: "medium"}}
     </span>
     <div class="playdate-creator">
-      created by: <strong>{{playdate.creator.first_name}}</strong>
+      created by: <strong>{{playdate.creator.username}}</strong>
       For pet: <strong>{{playdate.pet?.name}}</strong>
     </div>
   </div>
+
+  <!-- checks if curr. user is not the creator -->
+  @if (playdate.creator.id !== currentUser?.id) {
+    <button class="join-button" (click)="toggleJoinPlaydate()">{{hasJoined ? 'Leave Playdate' : 'Join Playdate'}}</button>
+  }
 </div>
