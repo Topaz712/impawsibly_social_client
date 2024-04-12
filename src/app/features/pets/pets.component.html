@@ -1,0 +1,7 @@
+<p>pets works!</p>
+<!-- show all pets on home page /option to toggle page to following pet posts-->
+<div class="pet-list-container">
+  @for (pet of pets; track pet.id) {
+    <app-pet [pet]="pet"/>
+  }
+</div>

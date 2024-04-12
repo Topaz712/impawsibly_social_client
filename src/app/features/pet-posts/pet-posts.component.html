@@ -1,0 +1,21 @@
+<p>pet-posts works!</p>
+<!--pet id profile posts-->
+<div class="pet-details-container">
+  <div class="pet-image">
+    <img [src]="pet.cover_image_url || ''" alt="">
+  </div>
+  <h2 class="pet-name">{{pet.name}}</h2>
+  <p class="pet-species">{{pet.species}}</p>
+  <p class="pet-breed">{{pet.breed}}</p>
+  <div class="pet-info">
+    <span class="pet-birthday">
+      {{pet.birthday | date: "medium"}}
+    </span>
+    <div class="pet-owner">
+      Bestfriend: <strong>{{pet.user?.username}}</strong>
+    </div>
+  </div>
+
+  <!-- checks if curr. user is not the owner and upload/edit/delete  -->
+
+</div>
