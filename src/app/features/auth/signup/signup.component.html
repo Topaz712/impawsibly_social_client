@@ -3,6 +3,13 @@
     <div class="form-group">
       <label for="username">Username</label>
       <input type="text" formControlName="username" />
+      @if(username?.invalid && (username?.dirty || username?.touched)) {
+        @if(username?.errors?.['required']) {
+          <span class="error">Username is required.</span>
+        } @if(username?.errors?.['minlength']) {
+          <span class="error">Username must be atleast 5 characters.</span>
+        }
+      }
     </div>
     <div class="form-group">
       <label for="first_name">First Name</label>
@@ -19,16 +26,30 @@
     <div class="form-group">
       <label for="password">Password</label>
       <input type="password" formControlName="password" />
+      @if(password?.invalid && (password?.dirty || password?.touched)) {
+        @if(password?.errors?.['required']) {
+          <span class="error">Password is required.</span>
+        } @if(password?.errors?.['minlength']) {
+          <span class="error">password must be atleast 5 characters.</span>
+        }
+      }
     </div>
     <div class="form-group">
       <label for="password_confirmation">Confirm Password</label>
       <input type="password" formControlName="password_confirmation" />
+      @if(password?.invalid && (password?.dirty || password?.touched)) {
+        @if(password?.errors?.['required']) {
+          <span class="error">Password is required.</span>
+        } @if(password?.errors?.['minlength']) {
+          <span class="error">password must be atleast 5 characters.</span>
+        }
+      }
     </div>
 
     @for (error of errors; track $index) {
       <p class="error">{{error}}</p>
     }
 
-    <button type="submit">Sign Up</button>
+    <button type="submit" [disabled]="!signupForm.valid">Sign Up</button>
   </form>
 </div>

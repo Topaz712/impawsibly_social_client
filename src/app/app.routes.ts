@@ -32,7 +32,29 @@ export const routes: Routes = [
       import('./features/timeline/timeline.component').then(
         (c) => c.TimelineComponent
       ),
-    canActivate: [noAuthGuard],
+    // canActivate: [noAuthGuard], //this being commented out lets posts show on dashboard... why..
+  },
+  {
+    path: 'create-pet',
+    loadComponent: () =>
+      import('./features/create-pet/create-pet.component').then(
+        (c) => c.CreatePetComponent
+      ),
+    canActivate: [authGuard],
+  },
+  {
+    path: 'pet-profile',
+    loadComponent: () =>
+      import('./features/pet-posts/pet-posts.component').then(
+        (c) => c.PetPostsComponent
+      ),
+    canActivate: [authGuard],
+  },
+  {
+    path: 'following',
+    loadComponent: () =>
+      import('./features/pets/pets.component').then((c) => c.PetsComponent),
+    canActivate: [authGuard],
   },
   {
     path: 'profile',
@@ -40,17 +62,6 @@ export const routes: Routes = [
       import('./shared/components/profile/profile.component').then(
         (c) => c.ProfileComponent
       ),
-    canActivate: [authGuard],
-    canActivateChild: [authGuard],
-    children: [
-      {
-        path: 'pet-profile',
-        loadComponent: () =>
-          import(
-            './shared/components/profile/pet-profile/pet-profile.component'
-          ).then((c) => c.PetProfileComponent),
-      },
-    ],
   },
   {
     path: 'playdates',

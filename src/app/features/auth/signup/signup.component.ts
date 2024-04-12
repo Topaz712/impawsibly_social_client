@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { AuthenticationService } from '../../../core/services/authentication.service';
 import { Router } from '@angular/router';
 
@@ -12,12 +17,21 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent {
   signupForm: FormGroup = new FormGroup({
-    username: new FormControl(''),
-    first_name: new FormControl(''),
-    last_name: new FormControl(''),
-    email: new FormControl(''),
-    password: new FormControl(''),
-    password_confirmation: new FormControl(''),
+    username: new FormControl('', [
+      Validators.required,
+      Validators.minLength(5),
+    ]),
+    first_name: new FormControl('', Validators.required),
+    last_name: new FormControl('', Validators.required),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(5),
+    ]),
+    password_confirmation: new FormControl('', [
+      Validators.required,
+      Validators.minLength(5),
+    ]),
   });
 
   errors: string[] = [];
@@ -39,5 +53,12 @@ export class SignupComponent {
         this.errors = error.error;
       },
     });
+  }
+
+  get username() {
+    return this.signupForm.get('username');
+  }
+  get password() {
+    return this.signupForm.get('password');
   }
 }
