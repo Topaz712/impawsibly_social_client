@@ -24,8 +24,8 @@ export class PetPostsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe(() => {
-      this.petService.getPets().subscribe({
+    this.route.params.subscribe((params) => {
+      this.petService.getPetById(params['id']).subscribe({
         next: (pet: Pet) => {
           this.pet = pet;
           console.log('get pet details:', this.pet);
@@ -35,6 +35,7 @@ export class PetPostsComponent implements OnInit {
         },
       });
     });
+
     this.userService.currentUserBehaviorSubject.subscribe(() => {
       this.currentUser = this.userService.currentUserBehaviorSubject.value;
     });

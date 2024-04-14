@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { Pet } from '../../shared/models/pet';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -10,23 +9,23 @@ import { Observable } from 'rxjs';
 export class PetService {
   constructor(private http: HttpClient) {}
 
-  getPets(): Observable<any> {
-    return this.http.get<any>(`${environment.apiUrl}/pets`);
+  getPets(page: number) {
+    return this.http.get<Pet[]>(`${environment.apiUrl}/pets?page=${page}`);
   }
 
-  getPetById(petId: number): Observable<any> {
-    return this.http.get<any>(`${environment.apiUrl}/pets/${petId}`);
+  getPetById(id: number) {
+    return this.http.get<Pet>(`${environment.apiUrl}/pets/${id}`);
   }
 
-  createPet(pet: any): Observable<Pet> {
-    return this.http.post<Pet>(`${environment.apiUrl}/pets`, pet);
+  createPet(pet: Pet) {
+    return this.http.post(`${environment.apiUrl}/pets`, pet);
   }
 
-  updatePet(petId: number, petData: any): Observable<Pet> {
+  updatePet(petId: number, petData: any) {
     return this.http.put<Pet>(`${environment.apiUrl}/pets/${petId}`, petData);
   }
 
-  deletePet(petId: number): Observable<any> {
-    return this.http.delete<any>(`${environment.apiUrl}/pets/${petId}`);
+  deletePet(petId: number) {
+    return this.http.delete(`${environment.apiUrl}/pets/${petId}`);
   }
 }

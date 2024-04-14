@@ -43,7 +43,8 @@ export const routes: Routes = [
     canActivate: [authGuard],
   },
   {
-    path: 'pet-profile',
+    // should show pets profile along with posts
+    path: 'pet-profile/:id',
     loadComponent: () =>
       import('./features/pet-posts/pet-posts.component').then(
         (c) => c.PetPostsComponent
@@ -51,12 +52,14 @@ export const routes: Routes = [
     canActivate: [authGuard],
   },
   {
-    path: 'following',
+    //show user's pets profiles
+    path: 'pets',
     loadComponent: () =>
       import('./features/pets/pets.component').then((c) => c.PetsComponent),
     canActivate: [authGuard],
   },
   {
+    // user's profile
     path: 'profile',
     loadComponent: () =>
       import('./shared/components/profile/profile.component').then(
