@@ -59,6 +59,16 @@ export const routes: Routes = [
     canActivate: [authGuard],
   },
   {
+    // update pets
+    path: 'update-pet/:id',
+    loadComponent: () =>
+      import(
+        './shared/components/pet-update-modal/pet-update-modal.component'
+      ).then((c) => c.PetUpdateModalComponent),
+    canActivate: [authGuard],
+  },
+
+  {
     // user's profile
     path: 'profile',
     loadComponent: () =>

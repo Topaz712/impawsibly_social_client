@@ -17,6 +17,10 @@ export class PetService {
     return this.http.get<Pet>(`${environment.apiUrl}/pets/${id}`);
   }
 
+  getUserPets() {
+    return this.http.get<Pet[]>(`${environment.apiUrl}/user_pets`);
+  }
+
   createPet(pet: Pet) {
     return this.http.post(`${environment.apiUrl}/pets`, pet);
   }
