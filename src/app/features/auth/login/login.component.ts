@@ -29,6 +29,7 @@ export class LoginComponent {
   ) {}
 
   login() {
+    console.log('button clicked');
     if (this.loginForm.valid) {
       const username = this.loginForm.value.username;
       const password = this.loginForm.value.password;
@@ -36,12 +37,15 @@ export class LoginComponent {
       this.authService.login(username, password).subscribe({
         next: (res: any) => {
           this.router.navigate(['/']);
+          console.log(res, 'This is my auth service login');
         },
         error: (error: any) => {
           console.error('Login error', error);
           this.isError = true;
         },
       });
+    } else {
+      console.log('we must have an errror');
     }
   }
 }

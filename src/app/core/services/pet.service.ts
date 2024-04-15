@@ -13,7 +13,7 @@ export class PetService {
     return this.http.get<Pet[]>(`${environment.apiUrl}/pets?page=${page}`);
   }
 
-  getPetById(id: number) {
+  getPetById(id: string | number) {
     return this.http.get<Pet>(`${environment.apiUrl}/pets/${id}`);
   }
 

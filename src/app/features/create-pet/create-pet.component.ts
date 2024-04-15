@@ -50,26 +50,24 @@ export class CreatePetComponent implements OnInit {
   }
 
   onCreatePet() {
-    if (!this.userId) {
-      console.error('User ID not found.');
-      return;
-    }
-
+    const birthday = this.petForm.get('birthday')!.value;
+    const formattedBirthday = birthday
+      ? new Date(birthday).toLocaleDateString()
+      : null;
     const formData: any = new FormData();
     formData.append('name', this.petForm.get('name')!.value);
     formData.append('bio', this.petForm.get('bio')!.value);
     formData.append('species', this.petForm.get('species')!.value);
     formData.append('breed', this.petForm.get('breed')!.value);
     formData.append('sex', this.petForm.get('sex')!.value);
-    formData.append('birthday', this.petForm.get('birthday')!.value);
+    formData.append('birthday', formattedBirthday);
     formData.append('is_vaccinated', this.petForm.get('is_vaccinated')!.value);
     formData.append('is_fixed', this.petForm.get('is_fixed')!.value);
     formData.append('avatar_image', this.selectedFile, this.selectedFile!.name);
-    formData.append('userId', this.userId.toString());
 
     this.petService.createPet(formData).subscribe({
       next: () => {
-        this.router.navigate(['/pet-profile']);
+        this.router.navigate(['/pets']);
         console.log(this.petForm);
       },
       error: (error) => {
