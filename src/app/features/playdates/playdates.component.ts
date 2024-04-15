@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { PlaydateService } from '../../core/services/playdate.service';
 import { Playdate } from '../../shared/models/playdate';
 import { PlaydateComponent } from '../../shared/components/playdates/playdate/playdate.component';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-playdates',
   standalone: true,
-  imports: [PlaydateComponent],
+  imports: [PlaydateComponent, RouterLink],
   templateUrl: './playdates.component.html',
   styleUrl: './playdates.component.scss',
 })

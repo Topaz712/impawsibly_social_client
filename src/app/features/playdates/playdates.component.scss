@@ -1,0 +1,49 @@
+.playdate-list-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  padding: 1rem;
+  min-height: 90vh;
+  margin-left: 10rem;
+}
+
+.button-options {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  margin-top: 4rem;
+  margin-left: 1rem;
+}
+
+.dashboard {
+  position: inherit;
+  margin-top: 6rem;
+}
+
+.page-controls {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.page-controls button{
+  background-color: #BC6C25;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
+  cursor: url(/assets/img/broken-cup.png), auto;
+  font-weight: bold;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.page-controls button:hover {
+  background-color: #588157;
+	color: #FEFAE0;
+  cursor: url(/assets/img/broken-cup.png), auto;
+}
+
+.page-controls button:hover[disabled]{
+  background-color: #ccc;
+  cursor: url(/assets/img/broken-cup.png), auto;
+}

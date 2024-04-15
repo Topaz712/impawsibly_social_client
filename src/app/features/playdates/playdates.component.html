@@ -1,3 +1,7 @@
+<div class="button-options">
+  <button class="button" routerLink="/create-playdate">Create Playdate</button>
+  <button class="button dashboard" routerLink="/">Dashboard</button>
+</div>
 <div class="playdate-list-container">
   @for (playdate of playdates; track playdate.id) {
     <app-playdate [playdate]="playdate"/>

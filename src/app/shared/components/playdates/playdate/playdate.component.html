@@ -1,8 +1,8 @@
 <div class="playdate-list-item">
   <div class="playdate-title">{{playdate.title}}</div>
-  <div class="playdate-user-name">{{playdate.creator.username}}</div>
+  <div class="playdate-user-name">Created by: {{playdate.creator.username}}</div>
   <div class="playdate-datetime">
-    {{playdate.start_date_time | date}} - {{playdate.end_date_time | date}}
+    Starting: {{playdate.start_date_time | date}} - {{playdate.end_date_time | date}}
   </div>
 
   <button class="view-more-button" [routerLink]="['/playdates', playdate.id]" routerLinkActive="router-link-active" >View Details</button>
