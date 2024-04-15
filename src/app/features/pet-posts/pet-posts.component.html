@@ -9,13 +9,18 @@
   <p class="pet-breed">{{pet.breed}}</p>
   <div class="pet-info">
     <span class="pet-birthday">
-      {{pet.birthday | date: "medium"}}
+      {{pet.birthday | date: "longDate"}}
     </span>
     <div class="pet-owner">
-      Bestfriend: <strong>{{pet.user?.username}}</strong>
+      Bestfriend: <strong><a routerLink="/profile/:id">{{pet.user?.username}}</a></strong>
     </div>
   </div>
 
   <!-- checks if curr. user is not the owner and upload/edit/delete  -->
-
+  <div class="button-edits">
+    <button class="button" routerLinkActive="active" [routerLink]="['/update-pet', pet.id]"
+    (click)="onUpdatePet(pet.id)">Edit Pet</button>
+    <button class="button" (click)="onDeletePet()">Delete Pet</button>
+  </div>
 </div>
+

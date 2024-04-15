@@ -2,15 +2,15 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	background-color: #8ECAE6; /*Navbar Primary color*/
-	color: white;
+	background-color: #dae3e5; /*Navbar Primary color*/
+	color: #588157;
 	padding: 0.5rem 1rem;
 }
 
 .navbar .logo-name a {
 	font-size: 1.5rem;
 	font-weight: bold;
-	color: #023047; /*Logo name color*/
+	color: #588157; /*Logo name color*/
 	text-decoration: none;
 }
 
@@ -29,14 +29,14 @@
 	padding: 0.5rem 1rem;
 	text-decoration: none;
 	font-size: 1rem;
-	cursor: pointer;
+	cursor: url(/assets/img/broken-cup.png), auto;
 	transition: background-color 0.3s, color 0.3s;
 }
 
 .navbar .nav-links a:hover,
 .navbar .nav-links button:hover {
-	background-color: #023047;
-	color: #8ECAE6; /* color on hover */
+	background-color: #588157;
+	color: #FEFAE0 /* color on hover */
 }
 
 /* Logout button*/
@@ -50,6 +50,7 @@
 	color: #007bff;
 	background-color: white;
 	border-color: #007bff;
+  cursor: url(/assets/img/broken-cup.png), auto;
 }
 
 .user {
@@ -67,7 +68,7 @@
 }
 
 .menu img{
-  cursor: pointer;
+  cursor: url(/assets/img/broken-cup.png), auto;
   background: none;
 }
 

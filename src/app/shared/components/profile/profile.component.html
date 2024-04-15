@@ -1,8 +1,26 @@
-<p>profile works!</p>
 <!-- TODO: after loggin in, have route available for this profile comp that will display owner and its pets list, if no owner profile has been made, conditional statement to route to owner profile comp-->
-<button class="button" routerLink="/create-pet">Create Pet Profile</button>
-<button class="button" routerLink="/pets">Pet list</button>
-<button class="button" routerLink="/pet-profile/:id">Specific Pet Profile</button>
+
+<!-- <button class="button" routerLink="/pet-profile/:id">Specific Pet Profile</button> -->
 <div class="container">
-  <div class="left-sidebar"></div>
-</div>
+  <div class="user-header">
+    <div class="user-header-avatar">
+      <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="">
+      <div class="user-header-info">
+        @if(isLoggedIn()) {
+          <div class="user-header-info-name">{{currentUser?.username}}'s pet gallery
+          </div>
+          }
+        <div class="user-header-info">
+          <!--user's pet count-->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="user-pet-list">
+    <app-pets></app-pets>
+  </div>
+
+
+
+

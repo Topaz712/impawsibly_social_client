@@ -1,0 +1,68 @@
+.pet-details-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pet-title {
+  color: #333;
+  background-color: #AFD8E6;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.pet-content {
+  margin: 20px 0;
+  line-height: 1.6;
+}
+
+.pet-info {
+  display: flex;
+  justify-content: space-between;
+  background-color: #954b4b;
+}
+
+.pet-info {
+  display: flex;
+  justify-content: space-between;
+  background-color: #ffc6f5;
+}
+
+.pet-info .pet-dates,
+.pet-info, .pet-creator {
+  margin: 0px;
+}
+
+.pet-timestamps {
+  font-size: 0.86rem;
+  color: #666;
+  margin-top: 10px;
+}
+
+.pet-timestamps span {
+  display: block;
+  margin: 5px 0;
+}
+
+.pet-image img{
+  width: 100%;
+}
+
+.guest-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px;
+}
+
+.guest-item {
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 100px;
+}

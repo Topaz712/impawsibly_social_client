@@ -1,12 +1,14 @@
-<p>pets works!</p>
-<!-- show all pets on home page /option to toggle page to following pet posts-->
+<div class="button-options">
+  <button class="button" routerLink="/create-pet">Create Pet Profile</button>
+  <button class="button dashboard" routerLink="/pets">Pet list</button>
+</div>
 <div class="pet-list-container">
   @for (pet of pets; track pet.id) {
     <app-pet [pet]="pet"/>
   }
 </div>
 
-<div class="page-controls"> 
+<div class="page-controls">
   <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
   <button (click)="nextPage()" [disabled]="currentPage === totalPages || totalPages === 0">Next</button>
 </div>
