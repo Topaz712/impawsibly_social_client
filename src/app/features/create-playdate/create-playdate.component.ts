@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import {
+  FormArray,
   FormControl,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
 import { PlaydateService } from '../../core/services/playdate.service';
-import { Playdate } from '../../shared/models/playdate';
 import { Router } from '@angular/router';
+import { Pet } from '../../shared/models/pet';
+import { UserService } from '../../core/services/user.service';
+import { PetService } from '../../core/services/pet.service';
 
 @Component({
   selector: 'app-create-playdate',
@@ -25,18 +28,60 @@ export class CreatePlaydateComponent implements OnInit {
     start_date_time: new FormControl('', Validators.required),
     end_date_time: new FormControl('', Validators.required),
     pet_limit: new FormControl('', Validators.required),
+    petIds: new FormArray([]),
   });
 
   selectedFile: File | null = null;
+  pets: Pet[] = [];
 
   constructor(
     private playdateService: PlaydateService,
-    private router: Router
+    private router: Router,
+    private petService: PetService,
+    private userService: UserService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loadPetIds();
+  }
+
+  addPetToForm() {
+    (this.playdateForm.get('petIds') as FormArray).push(new FormControl(false));
+  }
+
+  loadPetIds() {
+    this.petService.getUserPets().subscribe({
+      next: (pets: any) => {
+        console.log('loadPetIds: ', pets);
+        this.pets = pets;
+        pets.forEach((pet: Pet) => {
+          this.addPetToForm();
+        });
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+  }
+
+  get petIds(): FormArray {
+    return this.playdateForm.get('petIds') as FormArray;
+  }
+
+  fetchPetIds() {
+    const petIdsFormValue = this.playdateForm.value.petIds;
+    const petIds = petIdsFormValue
+      .map((checked: boolean, i: number) => {
+        return checked ? this.pets[i].id : null;
+      })
+      .filter((id: any) => {
+        return id !== null;
+      });
+    return petIds;
+  }
 
   onCreatePlaydate() {
+    const petIds = this.fetchPetIds();
     const formData: any = new FormData();
     formData.append('title', this.playdateForm.get('title')!.value);
     formData.append('content', this.playdateForm.get('content')!.value);
@@ -53,6 +98,9 @@ export class CreatePlaydateComponent implements OnInit {
       'end_date_time',
       this.playdateForm.get('end_date_time')!.value
     );
+    petIds.forEach((petId: any) => {
+      formData.append('pet_id', petId);
+    });
     formData.append('cover_image', this.selectedFile, this.selectedFile!.name);
 
     this.playdateService.createPlaydate(formData).subscribe({
