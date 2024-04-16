@@ -3,7 +3,7 @@
   <div class="pet-name">{{pet.name}}</div>
   <div class="pet-breed">{{pet.breed}}</div>
   <div class="pet-birthday">
-    {{pet.birthday | date}}
+    Birthday: {{pet.birthday | date}}
   </div>
 
   <button class="view-profile-button" [routerLink]="['/pet-profile', pet.id]" routerLinkActive="router-link-active" >View Profile</button>

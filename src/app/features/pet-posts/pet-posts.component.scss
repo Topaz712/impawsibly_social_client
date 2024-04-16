@@ -22,18 +22,13 @@
 .pet-info {
   display: flex;
   justify-content: space-between;
-  background-color: #954b4b;
-}
-
-.pet-info {
-  display: flex;
-  justify-content: space-between;
-  background-color: #ffc6f5;
+  // background-color: #ffc6f5;
 }
 
 .pet-info .pet-dates,
-.pet-info, .pet-creator {
+.pet-info, .pet-owner a{
   margin: 0px;
+  text-decoration: none;
 }
 
 .pet-timestamps {
@@ -48,21 +43,9 @@
 }
 
 .pet-image img{
-  width: 100%;
+  // width: 100%;
+  width: 108px;
+  height: 165px;
+  border-radius: 35px;
 }
 
-.guest-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  padding: 10px;
-}
-
-.guest-item {
-  border: 1px solid #ccc;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 200px;
-  height: 100px;
-}

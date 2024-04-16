@@ -8,8 +8,9 @@ export class Pet {
   breed: string;
   sex: string;
   birthday: Date;
-  isVaccinated: boolean;
-  isFixed: boolean;
+  is_vaccinated: boolean;
+  is_fixed: boolean;
+  avatar_image_url: string;
   user?: User;
 
   constructor(pet: any) {
@@ -19,9 +20,10 @@ export class Pet {
     this.species = pet.species || '';
     this.breed = pet.breed || '';
     this.sex = pet.sex || '';
-    this.birthday = pet.birthday || '';
-    this.isVaccinated = pet.isVaccinated || '';
-    this.isFixed = pet.isFixed || '';
+    this.birthday = pet.birthday || new Date();
+    this.is_vaccinated = pet.is_vaccinated || false;
+    this.is_fixed = pet.is_fixed || false;
+    this.avatar_image_url = pet.avatar_image_url;
     this.user = pet.User || null;
   }
 }

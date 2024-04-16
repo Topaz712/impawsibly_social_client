@@ -2,17 +2,24 @@
 <!--pet id profile posts-->
 <div class="pet-details-container">
   <div class="pet-image">
-    <img [src]="pet.avatar_image_url || ''" alt="">
+    <!-- <img [src]="pet.avatar_image_url || ''" alt=""> -->
+    <img src="../assets/img/hamster.webp" alt="hamster">
   </div>
   <h2 class="pet-name">{{pet.name}}</h2>
-  <p class="pet-species">{{pet.species}}</p>
-  <p class="pet-breed">{{pet.breed}}</p>
+  <p class="pet-species">Species: {{pet.species}}</p>
+  <p class="pet-breed">Breed: {{pet.breed}}</p>
   <div class="pet-info">
     <span class="pet-birthday">
-      {{pet.birthday | date: "longDate"}}
+      @if (pet.sex == 'female') {
+        <img src="../assets/icons/cake-candles-female-xl.svg" alt="cake">
+      Birthday is {{pet.birthday | date: "longDate"}}
+      } @else {
+        {{pet.birthday | date: "longDate"}}
+        <img src="../assets/icons/cake-candles-male-xl.svg" alt="cake">
+      }
     </span>
     <div class="pet-owner">
-      Bestfriend: <strong><a routerLink="/profile/:id">{{pet.user?.username}}</a></strong>
+      Their Bestfriend is: <strong><a routerLink="/profile">{{pet.user?.username}}</a></strong>
     </div>
   </div>
 

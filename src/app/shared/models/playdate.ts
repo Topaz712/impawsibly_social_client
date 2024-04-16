@@ -5,30 +5,32 @@ export class Playdate {
   id: number;
   title: string;
   content: string;
-  speciesSpecific: boolean;
-  petLimit: number;
-  startDateTime: string;
-  endDateTime: string;
-  createdAt: string;
-  hasJoined: boolean;
+  species_specific: boolean;
+  pet_limit: number;
+  start_date_time: string;
+  end_date_time: string;
+  created_at: string;
+  has_joined: boolean;
   cover_image_url: string;
-  participants: User[] | Pet[];
+  human_participants: User[];
+  pet_participants: Pet[];
   creator: User;
-  pet?: Pet;
+  selected_pet: Pet;
 
   constructor(playdate: any) {
     this.id = playdate.id || 0;
     this.title = playdate.title || '';
     this.content = playdate.content || '';
-    this.startDateTime = playdate.startDateTime;
-    this.endDateTime = playdate.endDateTime;
-    this.createdAt = playdate.createdAt;
+    this.start_date_time = playdate.startDateTime;
+    this.end_date_time = playdate.endDateTime;
+    this.created_at = playdate.createdAt;
     this.creator = playdate.creator || new User({});
-    this.pet = playdate.pet || null;
-    this.petLimit = playdate.petLimit || 0;
-    this.speciesSpecific = playdate.speciesSpecific || false;
-    this.hasJoined = playdate.hasJoined || false;
+    this.selected_pet = playdate.pet || new Pet({});
+    this.pet_limit = playdate.petLimit || 0;
+    this.species_specific = playdate.speciesSpecific || false;
+    this.has_joined = playdate.hasJoined || false;
     this.cover_image_url = playdate.cover_image_url;
-    this.participants = playdate.participants || [];
+    this.human_participants = playdate.participants || [];
+    this.pet_participants = playdate.participants || [];
   }
 }
