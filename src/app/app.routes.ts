@@ -32,7 +32,7 @@ export const routes: Routes = [
       import('./features/timeline/timeline.component').then(
         (c) => c.TimelineComponent
       ),
-    // canActivate: [noAuthGuard], //this being commented out lets posts show on dashboard... why..
+    canActivate: [noAuthGuard],
   },
   {
     path: 'create-pet',

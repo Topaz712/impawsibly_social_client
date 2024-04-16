@@ -13,4 +13,16 @@ export class PostService {
   getTimelinePetPosts(): Observable<Post[]> {
     return this.http.get<Post[]>(`${environment.apiUrl}/posts`);
   }
+
+  getTimelinePetPostsById(petId: number): Observable<Post[]> {
+    return this.http.get<Post[]>(`${environment.apiUrl}/pets/${petId}/posts`);
+  }
+
+  likePost(postId: number) {
+    return this.http.post(`${environment.apiUrl}/posts/${postId}/like`, {});
+  }
+
+  unlikePost(postId: number) {
+    return this.http.delete(`${environment.apiUrl}/posts/${postId}/unlike`);
+  }
 }

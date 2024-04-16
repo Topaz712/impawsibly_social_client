@@ -14,4 +14,5 @@
   </div>
 
   <div class="post-content">{{post.content}}</div>
+  <button (click)="likePost()" class="like-button">{{ post.liked ? 'Unlike' : 'Like' }}</button>
 </div>
