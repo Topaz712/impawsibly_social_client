@@ -1,29 +1,107 @@
 .pet-details-container {
-  max-width: 800px;
+  max-width: 600px;
   margin: 2rem auto;
   padding: 20px;
   background-color: #f8f8f8;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: inset -8px -8px 19px -5px rgba(201 202 201);
 }
 
-.pet-title {
-  color: #333;
-  background-color: #AFD8E6;
-  padding: 10px;
-  border-radius: 4px;
+.card-img-top {
+  width: 100%;
+  border-top-left-radius: calc(.25rem - 1px);
+  border-top-right-radius: calc(.25rem - 1px);
 }
 
-.pet-content {
-  margin: 20px 0;
-  line-height: 1.6;
+button {
+  border-radius: 30px;
 }
 
-.pet-info {
+.card-body {
+  flex: 1 1 auto;
+  padding: 1.25rem;
+  margin-left: auto;
+}
+
+.pet-name {
+  margin-bottom: .75rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px black, 1px 0 black, 0 -1px #ffffff;
+  color: #588157;
+}
+
+img, svg {
+  vertical-align: middle;
+  padding: 0.5rem;
+}
+
+.pet-birthday {
+  margin-top: 0;
+  font-style: italic;
+}
+
+.list-group {
   display: flex;
-  justify-content: space-between;
-  // background-color: #ffc6f5;
+  flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 0;
 }
+
+.list-group-flush .list-group-item {
+  border-right: 0;
+  border-left: 0;
+  border-radius: 0;
+}
+
+.list-group-item {
+  position: relative;
+  display: block;
+  padding: .75rem 1.25rem;
+  margin-bottom: -1px;
+  background-color: #f1f2f3;;
+  border: 10px solid rgb(241 243 245);
+}
+
+.ul {
+  margin-top: 0;
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+  unicode-bidi: isolate;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+
+// .pet-title {
+//   color: #333;
+//   background-color: #AFD8E6;
+//   padding: 10px;
+//   border-radius: 4px;
+// }
+
+// .pet-content {
+//   margin: 20px 0;
+//   line-height: 1.6;
+// }
+
+// .pet-info {
+//   display: flex;
+//   justify-content: space-between;
+//   // background-color: #ffc6f5;
+// }
 
 .pet-info .pet-dates,
 .pet-info, .pet-owner a{
@@ -31,16 +109,16 @@
   text-decoration: none;
 }
 
-.pet-timestamps {
-  font-size: 0.86rem;
-  color: #666;
-  margin-top: 10px;
-}
+// .pet-timestamps {
+//   font-size: 0.86rem;
+//   color: #666;
+//   margin-top: 10px;
+// }
 
-.pet-timestamps span {
-  display: block;
-  margin: 5px 0;
-}
+// .pet-timestamps span {
+//   display: block;
+//   margin: 5px 0;
+// }
 
 .pet-image img{
   // width: 100%;

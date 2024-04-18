@@ -5,6 +5,10 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { PetService } from '../../core/services/pet.service';
 import { UserService } from '../../core/services/user.service';
 import { DatePipe } from '@angular/common';
+import { Post } from '../../shared/models/post';
+import { PostService } from '../../core/services/post.service';
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-pet-posts',
   standalone: true,
@@ -41,9 +45,43 @@ export class PetPostsComponent implements OnInit {
     });
   }
 
+  // fetchPetPosts() {
+  //   this.postService.getTimelinePetPostsById(this.pet.id).subscribe({
+  //     next: (posts: Post[]) => {
+  //       this.petPosts = posts;
+  //     },
+  //     error: (error) => {
+  //       console.log('Error fetching pet posts:', error);
+  //     },
+  //   });
+  // }
+
   onUpdatePet(petId: number) {
     this.router.navigate(['/update-pet', petId]);
   }
 
-  onDeletePet() {}
+  onDeletePet(petId: number) {
+    Swal.fire({
+      title: 'Delete pet profile?',
+      text: 'Tell your pet I said Hi!',
+      icon: 'warning',
+      allowOutsideClick: false,
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.petService.deletePet(petId).subscribe({
+          next: () => {
+            Swal.fire('Deleted!', 'Pet has been deleted.', 'success');
+          },
+          error: (error) => {
+            console.error('Error deleting pet:', error);
+          },
+        });
+        this.router.navigate(['profile']);
+      }
+    });
+  }
 }

@@ -35,6 +35,14 @@ export const routes: Routes = [
     canActivate: [noAuthGuard],
   },
   {
+    path: 'create-post',
+    loadComponent: () =>
+      import('./features/create-post/create-post.component').then(
+        (c) => c.CreatePostComponent
+      ),
+    canActivate: [authGuard],
+  },
+  {
     path: 'create-pet',
     loadComponent: () =>
       import('./features/create-pet/create-pet.component').then(

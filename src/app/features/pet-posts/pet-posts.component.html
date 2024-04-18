@@ -1,33 +1,32 @@
 <p>pet-posts works!</p>
 <!--pet id profile posts-->
-<div class="pet-details-container">
-  <div class="pet-image">
-    <!-- <img [src]="pet.avatar_image_url || ''" alt=""> -->
-    <img src="../assets/img/hamster.webp" alt="hamster">
-  </div>
-  <h2 class="pet-name">{{pet.name}}</h2>
-  <p class="pet-species">Species: {{pet.species}}</p>
-  <p class="pet-breed">Breed: {{pet.breed}}</p>
-  <div class="pet-info">
+<div class="pet-details-container card">
+  <img class="card-img-top pet-image" [src]="pet.avatar_image_url || ''" alt="pet-picture">
+  <div class="card-body">
+    <h2 class="pet-name">{{pet.name}}</h2>
     <span class="pet-birthday">
       @if (pet.sex == 'female') {
+        {{pet.birthday | date: "longDate"}}
         <img src="../assets/icons/cake-candles-female-xl.svg" alt="cake">
-      Birthday is {{pet.birthday | date: "longDate"}}
       } @else {
         {{pet.birthday | date: "longDate"}}
         <img src="../assets/icons/cake-candles-male-xl.svg" alt="cake">
       }
     </span>
-    <div class="pet-owner">
-      Their Bestfriend is: <strong><a routerLink="/profile">{{pet.user?.username}}</a></strong>
-    </div>
   </div>
-
-  <!-- checks if curr. user is not the owner and upload/edit/delete  -->
-  <div class="button-edits">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item pet-species">Species: {{pet.species}}</li>
+    <li class="list-group-item pet-breed">Breed: {{pet.breed}}</li>
+    <li class="list-group-item pet-owner">
+      <strong>
+        Their Bestfriend is:
+        <a routerLink="/profile">{{pet.user?.username}}</a>
+      </strong></li>
+  </ul>
+  <div class="card-body button-edits">
     <button class="button" routerLinkActive="active" [routerLink]="['/update-pet', pet.id]"
     (click)="onUpdatePet(pet.id)">Edit Pet</button>
-    <button class="button" (click)="onDeletePet()">Delete Pet</button>
+    <button class="button" (click)="onDeletePet(pet.id)">Delete Pet</button>
   </div>
 </div>
 
