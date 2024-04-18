@@ -74,10 +74,7 @@ export class PlaydateDetailsComponent implements OnInit {
   }
 
   prepareParticipants() {
-    this.participants = [
-      ...this.playdate.human_participants,
-      ...this.playdate.pet_participants,
-    ];
+    this.participants = [...this.playdate.pet_participants];
 
     const availableSpots =
       this.playdate.pet_limit - this.playdate.pet_participants.length;

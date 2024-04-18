@@ -1,6 +1,6 @@
 <div class="playdate-details-container">
   <div class="playdate-image">
-    <img [src]="playdate.cover_image_url || ''" alt="">
+    <img [src]="playdate.cover_image_url || '../../../assets/img/meadow.jpg'" alt="">
   </div>
   <h2 class="playdate-title">{{playdate.title}}</h2>
   <p class="playdate-content">{{playdate.content}}</p>
@@ -10,12 +10,24 @@
     </span>
     <div class="playdate-creator">
       created by: <strong>{{playdate.creator.username}}</strong>
-      For pet: <strong>{{playdate.pet?.name}}</strong>
     </div>
   </div>
 
   <!-- checks if curr. user is not the creator -->
   @if (playdate.creator.id !== currentUser?.id) {
     <button class="join-button" (click)="toggleJoinPlaydate()">{{hasJoined ? 'Leave Playdate' : 'Join Playdate'}}</button>
+  }
+</div>
+
+
+<div class="participants-container">
+  @for(participant of participants; track trackById) {
+    <div class="participants-item">
+      @if(participant.empty) {
+        <div>Open Spot</div>
+      } @else {
+        <div class="spot-filled">{{participant.name}}</div>
+      }
+    </div>
   }
 </div>
