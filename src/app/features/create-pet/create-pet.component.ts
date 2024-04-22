@@ -9,6 +9,9 @@ import { PetService } from '../../core/services/pet.service';
 import { Router, RouterLink } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { UserService } from '../../core/services/user.service';
+import { PostService } from '../../core/services/post.service';
+import { Post } from '../../shared/models/post';
+import { Pet } from '../../shared/models/pet';
 
 @Component({
   selector: 'app-create-pet',
@@ -35,13 +38,15 @@ export class CreatePetComponent implements OnInit {
   constructor(
     private userService: UserService,
     private petService: PetService,
-    private router: Router
+    private router: Router,
+    private postService: PostService
   ) {}
 
   ngOnInit(): void {
     this.userService.currentUserBehaviorSubject.subscribe((user) => {
       if (user) {
         this.userId = user.id;
+        this.onCreatePet();
       } else {
         console.error('User ID not found. Please log in.');
         this.router.navigate(['/login']);

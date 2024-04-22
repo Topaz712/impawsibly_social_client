@@ -1,0 +1,24 @@
+<div class="form-container">
+  <form [formGroup]="postForm" (ngSubmit)="onCreatePost()">
+    <div class="form-group">
+      @if (petIds.length > 0) {
+        <div formArrayName="petIds">
+          <label for="selectedPet"><strong>Select a pet this post will be for:</strong></label>
+          @for (pet of pets; track pet.id) {
+            <input type="checkbox" [formControlName]="$index" [value]="pet.id">{{ pet.name }}
+          }
+        </div>
+      }
+    </div>
+    <div class="form-group">
+      <label for="content">Content</label>
+      <input type="text" formControlName="content">
+    </div>
+
+    <div>
+      <label for="images">Upload Image</label>
+      <input type="file" (change)="onFileSelected($event)" id="images">
+    </div>
+    <button type="submit">Create Post</button>
+  </form>
+</div>
