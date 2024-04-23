@@ -2,7 +2,7 @@
   <div class="side_column"></div>
   <div class="main_column">
     @for (post of posts; track post.id){
-      <app-post [post]="post"/>
+      <app-post [post]="post" [pet]="pet"/>
     }
   </div>
   <div class="side_column"></div>
