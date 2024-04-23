@@ -1,0 +1,45 @@
+<form [formGroup]="updatePetForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="name">{{ pet.name }}</label>
+    <input type="text" formControlName="name" [value]="updatePetForm.get('name')?.value">
+  </div>
+  <div class="form-group">
+    <label for="bio">{{ pet.bio }}</label>
+    <textarea formControlName="bio" class="form-control" id="bio" rows="3"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="species">{{ pet.species }}</label>
+    <input type="text" formControlName="species">
+  </div>
+  <div class="form-group">
+    <label for="breed">{{ pet.breed }}</label>
+    <input type="text" formControlName="breed">
+  </div>
+  <div class="form-group">
+    <label for="sex">{{ pet.sex }}</label>
+    <select formControlName="sex">
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="birthday">{{ pet.birthday | date}}</label>
+    <input type="date" formControlName="birthday">
+  </div>
+  <div class="form-group">
+    <label for="is_vaccinated">{{ pet.is_vaccinated }}</label>
+    <input type="radio" formControlName="is_vaccinated" value="true"> Yes
+    <input type="radio" formControlName="is_vaccinated" value="false"> No
+  </div>
+  <div class="form-group">
+    <label for="is_fixed">{{ pet.is_fixed }}</label>
+    <input type="radio" formControlName="is_fixed" value="true"> Yes
+    <input type="radio" formControlName="is_fixed" value="false"> No
+  </div>
+
+  <div class="form-group">
+    <label for="cover_image">{{ pet.avatar_image_url }}</label>
+    <input type="file" (change)="onFileSelected($event)">
+  </div>
+  <button type="submit">Update Pet</button>
+</form>
