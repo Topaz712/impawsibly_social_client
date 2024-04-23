@@ -18,6 +18,23 @@ export class PostService {
     return this.http.get<Post[]>(`${environment.apiUrl}/pets/${petId}/posts`);
   }
 
+  createPost(post: Post) {
+    return this.http.post<Post>(`${environment.apiUrl}/posts`, post);
+  }
+
+  getPostComments(postId: number): Observable<Comment[]> {
+    return this.http.get<Comment[]>(
+      `${environment.apiUrl}/posts/${postId}/comments`
+    );
+  }
+
+  createComment(postId: number, content: string) {
+    return this.http.post(
+      `${environment.apiUrl}/posts/${postId}/create_comment`,
+      content
+    );
+  }
+
   likePost(postId: number) {
     return this.http.post(`${environment.apiUrl}/posts/${postId}/like`, {});
   }
