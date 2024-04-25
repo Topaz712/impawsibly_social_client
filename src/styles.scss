@@ -6,12 +6,16 @@ body {
 	box-sizing: border-box;
 	font-family: 'Roboto', sans-serif;
 
+
   cursor: url(assets/img/paw-cursor.png), auto;
 }
 
 body {
   background-color: #f3f3f3;
   font-family: Arial, sans-serif;
+  background-image: url("./assets/img/pexels-photo-10526880.webp");
+  background: repeat;
+  opacity: inherit;
 }
 
 .form-container {
@@ -82,3 +86,5 @@ button {
   background-color: #ccc;
   cursor: not-allowed;
 }
+
+
